@@ -1,7 +1,139 @@
-body { font-family: Arial, sans-serif; margin: 24px; color: #222; }
-header { display: flex; justify-content: space-between; align-items: baseline; }
-.controls { display: flex; gap: 16px; margin: 12px 0; align-items: center; }
-.import input { font-size: 12px; }
-table { border-collapse: collapse; width: 100%; }
-th, td { border-bottom: 1px solid #ddd; padding: 6px 8px; text-align: left; vertical-align: top; white-space: pre-line; }
-th { background: #f2f2f2; }
+:root {
+  --bg: #0e0d1a;
+  --panel: #171628;
+  --panel-2: #1e1d33;
+  --ink: #f2eefc;
+  --muted: #b3aed0;
+  --line: #322f52;
+  --accent: #ff5ea8;
+  --accent-2: #37e0c8;
+  --gold: #f5c542;
+  --silver: #c9cede;
+  --bronze: #d08a4e;
+  --platinum: #7fe3ff;
+  --danger: #ff6b5e;
+  --radius: 12px;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  line-height: 1.5;
+}
+.masthead {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: space-between;
+  padding: 32px 28px 20px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+.kicker {
+  margin: 0 0 6px;
+  color: var(--accent-2);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+h1 { margin: 0 0 8px; font-size: 40px; line-height: 1.1; letter-spacing: -0.01em; }
+.lede { margin: 0; max-width: 640px; color: var(--muted); font-size: 17px; }
+.progress-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  min-width: 280px;
+}
+.big-number { margin: 0; font-size: 40px; font-weight: 800; line-height: 1; }
+.big-number .of { color: var(--muted); font-size: 22px; font-weight: 600; }
+.progress-label { margin: 6px 0 10px; color: var(--muted); }
+.bar { height: 10px; background: #26243f; border-radius: 6px; overflow: hidden; }
+.bar-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); transition: width 0.3s ease; }
+.grade-counts { list-style: none; display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 12px 0 0; padding: 0; font-size: 13px; color: var(--muted); }
+.grade-counts b { color: var(--ink); }
+main { max-width: 1180px; margin: 0 auto; padding: 0 28px 24px; }
+h2 { font-size: 24px; margin: 28px 0 6px; }
+.section-note { color: var(--muted); margin: 0 0 14px; max-width: 760px; }
+.stages { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.stages li {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+}
+.stages h3 { margin: 0 0 6px; font-size: 16px; }
+.stages h3 .stage-num { color: var(--accent); margin-right: 6px; }
+.stages p { margin: 0 0 8px; color: var(--muted); font-size: 14px; }
+.stages .stage-count { font-size: 13px; font-weight: 700; color: var(--accent-2); }
+.controls { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; margin: 14px 0; }
+.controls label { font-size: 14px; color: var(--muted); }
+.controls input[type="search"], .controls select {
+  background: var(--panel);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 7px 10px;
+  font-size: 14px;
+}
+.controls input[type="search"] { min-width: 220px; }
+.controls .check { display: flex; align-items: center; gap: 6px; color: var(--ink); cursor: pointer; }
+.controls .spoiler { color: var(--accent-2); font-weight: 600; }
+.controls.tools { border-top: 1px solid var(--line); padding-top: 12px; }
+button {
+  background: var(--accent);
+  color: #1a0713;
+  border: 0;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+button.secondary { background: var(--panel-2); color: var(--ink); border: 1px solid var(--line); }
+button:hover { filter: brightness(1.12); }
+.import { cursor: pointer; color: var(--ink); font-weight: 700; }
+.import input { display: none; }
+.showing { margin-left: auto; color: var(--muted); font-size: 13px; }
+.trophy-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.trophy {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+}
+.trophy.earned { border-color: var(--accent-2); }
+.trophy-head { display: flex; gap: 12px; align-items: flex-start; }
+.trophy-head input[type="checkbox"] { width: 20px; height: 20px; margin-top: 3px; accent-color: var(--accent-2); cursor: pointer; flex-shrink: 0; }
+.trophy-title { flex: 1; min-width: 0; }
+.trophy-title h3 { margin: 0; font-size: 17px; }
+.trophy-title h3 .missable-flag { color: var(--danger); font-size: 12px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; margin-left: 8px; white-space: nowrap; }
+.trophy-desc { margin: 2px 0 0; color: var(--muted); font-size: 14px; }
+.badges { display: flex; gap: 6px; flex-wrap: wrap; flex-shrink: 0; }
+.badge {
+  font-size: 12px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase;
+  border-radius: 999px; padding: 3px 9px; white-space: nowrap;
+}
+.badge.platinum { background: #12303c; color: var(--platinum); }
+.badge.gold { background: #3a2f10; color: var(--gold); }
+.badge.silver { background: #2c2f3d; color: var(--silver); }
+.badge.bronze { background: #3a2415; color: var(--bronze); }
+.badge.kind { background: var(--panel-2); color: var(--muted); border: 1px solid var(--line); }
+.badge.hidden-tag { background: #2a1b33; color: #d9a7ff; }
+.guide-toggle { margin-top: 10px; }
+.guide { margin-top: 12px; border-top: 1px solid var(--line); padding-top: 12px; }
+.guide p { margin: 0 0 8px; font-size: 15px; }
+.guide .sources { margin: 0; font-size: 13px; color: var(--muted); }
+.guide .sources a { color: var(--accent-2); }
+.spoiler-hidden { color: var(--muted); font-style: italic; }
+.spoiler-hidden h3 { font-style: normal; }
+.empty { color: var(--muted); }
+footer { max-width: 1180px; margin: 0 auto; padding: 8px 28px 32px; color: var(--muted); font-size: 13px; }
+@media (max-width: 640px) {
+  h1 { font-size: 30px; }
+  .masthead, main { padding-left: 16px; padding-right: 16px; }
+  .showing { margin-left: 0; }
+}

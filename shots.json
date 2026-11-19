@@ -1,5 +1,1 @@
-[
-  { "file": "1-checklist.jpg", "path": "/", "viewport": { "width": 1280, "height": 800 } },
-  { "file": "2-silver.jpg", "path": "/", "grade": "silver", "viewport": { "width": 1280, "height": 800 } },
-  { "file": "3-bronze.jpg", "path": "/", "grade": "bronze", "scroll": 1400, "viewport": { "width": 1280, "height": 800 } }
-]
+[{"file":"1-guide.jpg","note":"Cover: tracker controls (search, grade, kind, missable, spoiler setting, export/import) and the trophy list, 14 of 55 earned","path":"/","viewport":{"height":800,"width":1280}},{"file":"2-detail.jpg","note":"Positive Mental Attitude guide open with its sources, spoiler-masked hidden trophies above and below","path":"/","viewport":{"height":800,"width":1280}},{"file":"3-tracker.jpg","note":"Masthead progress summary (14 of 55, 25% to the platinum, counts by grade) and the roadmap stages","path":"/","viewport":{"height":800,"width":1280}},{"file":"4-spoiler.jpg","kind":"story","note":"Spoiler mode on story trophies: earned ones revealed, the rest masked as hidden","path":"/","viewport":{"height":800,"width":1280}}]
